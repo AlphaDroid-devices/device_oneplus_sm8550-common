@@ -110,6 +110,11 @@ on boot
     # Allow access to memory hotplug device attributes
     chown system system /sys/kernel/mem-offline/anon_migrate
 
+    # Set walt as default governor
+    write /sys/devices/system/cpu/cpufreq/policy0/scaling_governor walt
+    write /sys/devices/system/cpu/cpufreq/policy3/scaling_governor walt
+    write /sys/devices/system/cpu/cpufreq/policy7/scaling_governor walt
+
 on post-fs-data
     # Create directory used for dump collection
     mkdir /data/vendor/ssrdump 0770 root system
