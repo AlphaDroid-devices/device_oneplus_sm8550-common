@@ -59,6 +59,13 @@ BOARD_BOOT_HEADER_VERSION := 4
 BOARD_MKBOOTIMG_ARGS += --header_version $(BOARD_BOOT_HEADER_VERSION)
 BOARD_RAMDISK_USE_LZ4 := true
 
+# Display
+# aston and astonc ship the same 1264x2780 panel, so this belongs here rather
+# than repeated per device. It bakes ro.sf.lcd_density, which init.qcom.rc would
+# otherwise overwrite from the QTI resolution table -- that setprop is a no-op
+# only because a ro. property cannot be set twice.
+TARGET_SCREEN_DENSITY := 450
+
 # DTB / DTBO
 BOARD_INCLUDE_DTB_IN_BOOTIMG := true
 BOARD_USES_QCOM_MERGE_DTBS_SCRIPT := true
